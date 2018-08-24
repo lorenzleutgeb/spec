@@ -344,11 +344,13 @@ Variable Instructions
 
 5. Let :math:`\X{glob}` be the :ref:`global instance <syntax-globalinst>` :math:`S.\SGLOBALS[a]`.
 
-6. Assert: due to :ref:`validation <valid-set_global>`, a value is on the top of the stack.
+6. Assert: due to :ref:`validation <valid-set_global>`, :math:`\X{glob}` is marked as mutable.
 
-7. Pop the value :math:`\val` from the stack.
+7. Assert: due to :ref:`validation <valid-set_global>`, a value is on the top of the stack.
 
-8. Replace :math:`\X{glob}.\GIVALUE` with the value :math:`\val`.
+8. Pop the value :math:`\val` from the stack.
+
+9. Replace :math:`\X{glob}.\GIVALUE` with the value :math:`\val`.
 
 .. math::
    \begin{array}{l}
@@ -358,10 +360,6 @@ Variable Instructions
    \\ \qquad
    (\iff S' = S \with \SGLOBALS[F.\AMODULE.\MIGLOBALS[x]].\GIVALUE = \val) \\
    \end{array}
-
-.. note::
-   :ref:`Validation <valid-set_global>` ensures that the global is, in fact, marked as mutable.
-
 
 .. index:: memory instruction, memory index, store, frame, address, memory address, memory instance, store, frame, value, integer, limits, value type, bit width
    pair: execution; instruction
